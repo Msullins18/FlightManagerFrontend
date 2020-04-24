@@ -6,13 +6,18 @@ import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-pa
 import { LoginComponent } from './admin-landing-page/login/login.component';
 import { AdminRegisterComponent } from './admin-landing-page/admin-register/admin-register.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [AdminLandingPageComponent, LoginComponent, AdminRegisterComponent, AdminHomeComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

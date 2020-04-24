@@ -27,12 +27,11 @@ export class LoginComponent implements OnInit {
   {
     this.admin.emailId = this.loginForm.value.emailID;
     this.admin.password = this.loginForm.value.password;
-    console.log(this.admin);
     this.loginService.login(this.admin).subscribe(
       (response) => {
         this.admin = response
         sessionStorage.setItem("admin", JSON.stringify(this.admin));
-        this.router.navigate(['/home']);
+        this.router.navigate(['/admin/home']);
     }
     )
   }

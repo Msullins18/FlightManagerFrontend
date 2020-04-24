@@ -22,7 +22,6 @@ export class TravelerRegisterComponent implements OnInit {
     this.createForm()
   }
   createForm() {
-
     this.loginForm = this.fb.group({
         emailId: [this.traveler.emailId, [Validators.required],null],
         firstName: [this.traveler.firstName, [Validators.required],null],

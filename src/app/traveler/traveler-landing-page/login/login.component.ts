@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   {
     this.traveler.emailId = this.loginForm.value.emailID;
     this.traveler.password = this.loginForm.value.password;
-    console.log(this.traveler);
     this.loginService.login(this.traveler).subscribe(
       (response) => {
         this.traveler = response
