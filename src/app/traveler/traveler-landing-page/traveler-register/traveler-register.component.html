@@ -1,1 +1,50 @@
-<p>traveler-register works!</p>
+<div class="card">
+    <div class="card-body">
+        <div *ngIf="!registered" class="form-bg-light p-2">
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="register()">
+                <div class="card-header pl-0">
+                    <h3 class="h3 m-0 p-0">Register</h3>
+                </div>
+
+                <div class="form-group w-100 mt-3">
+                    <label for="firstName">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" name="firstName" id="firstName">
+                </div>
+                
+                <div class="form-group w-100">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" name="lastName" id="lastName">
+                </div>
+        
+                <div class="form-group w-100">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="number" formControlName="phoneNumber" class="form-control" name="phoneNumber" id="phoneNumber">
+                </div>
+        
+                <div class="form-group w-100">
+                    <label for="emailId">Email address</label>
+                    <input type="email" formControlName="emailId" class="form-control" name="emailId" id="emailId">
+                </div>
+        
+                <div class="form-group w-100 mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" name="password" id="password">
+                </div>
+                <div class="card-footer">
+                    <div class="form-group m-0">
+                        <button type="submit" class="btn btn-primary mr-3">Submit</button>
+                        <button [routerLink]="['/applicationHome/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-light ml-5">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="registered" class="card-header pl-0">
+            <h3 class="h3 m-0 p-0">Success!</h3>
+        </div>
+        <div *ngIf="registered" class="container text-center align-content-center justify-content-center mt-3">
+            <p>Successfully registered with email ID: {{ registeredEmail }}</p>
+            <br>
+            <button [routerLink]="['/applicationHome/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Login</button>
+        </div>
+    </div>
+</div>

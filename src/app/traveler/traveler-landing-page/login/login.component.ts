@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Traveler } from '../../../shared/traveler';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { Traveler } from '../../../shared/traveler';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   traveler: Traveler
-  constructor(private fb: FormBuilder,) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.traveler = new Traveler();
@@ -25,7 +27,15 @@ export class LoginComponent implements OnInit {
   }
   login()
   {
-    this.traveler = this.loginForm.value as Traveler;
-    console.log(this.traveler.emailId);
+    this.traveler.emailId = this.loginForm.value.emailID;
+    this.traveler.password = this.loginForm.value.password;
+    console.log(this.traveler);
+    this.loginService.login(this.traveler).subscribe(
+      (response) => {
+        this.traveler = response
+        sessionStorage.setItem("traveler", JSON.stringify(this.traveler));
+        this.router.navigate(['/home']);
+    }
+    )
   }
 }
