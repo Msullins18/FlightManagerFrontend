@@ -4,6 +4,7 @@ import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-l
 import { LoginComponent } from './traveler-landing-page/login/login.component';
 import { TravelerRegisterComponent } from './traveler-landing-page/traveler-register/traveler-register.component';
 import { TravelerHomeComponent } from './traveler-home/traveler-home.component';
+import { TravelerSearchComponent } from './traveler-home/traveler-search/traveler-search.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   ] },
 
   { path: 'home', component: TravelerHomeComponent, children: [
-
+    {path: 'search', component: TravelerSearchComponent}
   ]}
   ];
 

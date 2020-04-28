@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="offset-1 col-10"><br />
+        <h3 class="text-center">Search Your Flights</h3><br />
+        <div class="bordering-side form-bg-light text-center">
+            <form [formGroup]="searchForm" (ngSubmit)="getFlights()" #addsearchForm="ngForm">
+                <table class="table table-condensed">
+                    <tr>
+                        <th>From:</th>
+                        <td>
+                            <select class="form-control" formControlName="airportId">
+                                <option *ngFor="let airport of airportList" value="{{airport.airportId}}">
+                                    {{airport.city}}</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>To:</th>
+                        <td>
+                            <select class="form-control" formControlName="destination">
+                                <option *ngFor="let destination of destinationList" value="{{destination}}">
+                                    {{destination}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date:</th>
+                        <td>
+                            <input type="date" class="form-control" formControlName="date" required />
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Passengers:</th>
+                        <td>
+                            <input type="number" class="form-control" formControlName="numberOfTickets" min=1
+                                required />
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="row">
+                        <button class="offset-md-4 btn btn-info form-button">
+                            Search Flights
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <br/>
+            <div *ngIf="errorMessage!=null">
+                <div class="text-danger text-center">{{errorMessage}}</div>
+            </div>
+
+        </div>
+        <br />
+        <div class="row" *ngIf="isAvailable && errorMessage==null">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">Flight Id</th>
+                        <th style="text-align: center">Destination</th>
+                        <th style="text-align: center">Date of Departure</th>
+                        <th style="text-align: center">Date of Arrival</th>
+                        <th style="text-align: center">Base Fare</th>
+                        <th style="text-align: center">Tax</th>
+                        <th style="text-align: center">Total Fare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flight of flightList">
+                        <td>{{flight.flightId}}</td>
+                        <td>{{flight.destination}}</td>
+                        <td>{{flight.dateOfDeparture}}</td>
+                        <td>{{flight.dateOfArrival}}</td>
+                        <td>{{flight.flightFare}}</td>
+                        <td>{{flight.flightTax}}</td>
+                        <td>{{flight.flightFare + flight.flightTax}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <div class="text-success">Price Per Ticket </div>
+            <br/><br/><br/>
+        </div>
+    </div>
+</div>
