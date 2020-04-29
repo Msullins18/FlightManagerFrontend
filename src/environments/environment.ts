@@ -4,10 +4,11 @@
 const HOSTNAME: string = "localhost";
 const PORT_NUMBER: number = 8085;
 const APPLICATION_NAME: string = '/Flight_Manager';
+
 export const environment = {
   production: false,
   travelerAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/Traveller',
   adminAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/Admin',
-  airportAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/AirportAPI'
+
 
 };

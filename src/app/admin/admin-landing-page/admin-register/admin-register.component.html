@@ -33,7 +33,7 @@
                 <div class="card-footer">
                     <div class="form-group m-0">
                         <button type="submit" class="btn btn-primary mr-3">Submit</button>
-                        <button [routerLink]="['/applicationHome/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-light ml-5">Login</button>
+                        <button [routerLink]="['/admin/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-light ml-5">Login</button>
                     </div>
                 </div>
             </form>
@@ -44,7 +44,7 @@
         <div *ngIf="registered" class="container text-center align-content-center justify-content-center mt-3">
             <p>Successfully registered with email ID: {{ registeredEmail }}</p>
             <br>
-            <button [routerLink]="['/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Login</button>
+            <button [routerLink]="['/admin/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Login</button>
         </div>
     </div>
 </div>

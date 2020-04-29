@@ -4,9 +4,10 @@ import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-pa
 import { LoginComponent } from './admin-landing-page/login/login.component';
 import { AdminRegisterComponent } from './admin-landing-page/admin-register/admin-register.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { AdminAddAirportComponent } from './admin-home/admin-add-airport/admin-add-airport.component';
-import { AdminDeleteAirportComponent } from './admin-home/admin-delete-airport/admin-delete-airport.component';
-import { AirportAddFlightComponent } from './admin-home/admin-add-airport/airport-add-flight/airport-add-flight.component';
+
+
+import { RoutingGuard } from '../routing-guard';
+
 
 
 const routes: Routes = [
@@ -16,10 +17,11 @@ const routes: Routes = [
     {path: 'register', component: AdminRegisterComponent}
   ] },
 
-  { path: 'admin/home', component: AdminHomeComponent, children: [
-    {path: 'addAirport', component: AdminAddAirportComponent},
-    {path: 'addFlight', component: AirportAddFlightComponent},
-    {path: 'deleteAirport', component: AdminDeleteAirportComponent}
+
+
+  { path: 'admin/home', component: AdminHomeComponent,canActivate:[RoutingGuard], children: [
+
+
   ]}
 ];
 

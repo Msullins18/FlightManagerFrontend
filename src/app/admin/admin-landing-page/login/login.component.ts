@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.admin).subscribe(
       (response) => {
         this.admin = response
+        sessionStorage.setItem("userType", JSON.stringify("admin"));
         sessionStorage.setItem("admin", JSON.stringify(this.admin));
         this.router.navigate(['/admin/home']);
     }

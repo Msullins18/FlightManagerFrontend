@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TravelerModule } from './traveler/traveler.module';
 import { AdminModule } from './admin/admin.module';
+import { RoutingGuard } from './routing-guard';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RoutingGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
