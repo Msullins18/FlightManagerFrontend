@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Flight } from 'src/app/shared/flight';
+import { Flight } from 'src/app/shared/Flight';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
