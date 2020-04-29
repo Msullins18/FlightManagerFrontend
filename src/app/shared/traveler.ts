@@ -1,3 +1,5 @@
+import { Admin } from './admin';
+
 export class Traveler {
     emailId: string;
     firstName: string;

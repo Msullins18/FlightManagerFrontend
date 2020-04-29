@@ -7,6 +7,7 @@ import { LoginComponent } from './traveler-landing-page/login/login.component';
 import { TravelerRegisterComponent } from './traveler-landing-page/traveler-register/traveler-register.component';
 import { TravelerHomeComponent } from './traveler-home/traveler-home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TravelerSearchComponent } from './traveler-home/traveler-search/traveler-search.component';
 
 
 
@@ -14,7 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [TravelerLandingPageComponent, 
     LoginComponent, 
     TravelerRegisterComponent, 
-    TravelerHomeComponent],
+    TravelerHomeComponent,
+    TravelerSearchComponent
+  ],
   imports: [
     CommonModule,
     TravelerRoutingModule,

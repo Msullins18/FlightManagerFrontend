@@ -3,9 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 const HOSTNAME: string = "localhost";
 const PORT_NUMBER: number = 8080;
-
-
 const APPLICATION_NAME: string = '/Flight_Manager';
+
 export const environment = {
   production: false,
   travelerAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/Traveller',

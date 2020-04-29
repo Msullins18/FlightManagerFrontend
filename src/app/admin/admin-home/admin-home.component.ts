@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/shared/admin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home',
@@ -8,9 +9,14 @@ import { Admin } from 'src/app/shared/admin';
 })
 export class AdminHomeComponent implements OnInit {
   admin: Admin = JSON.parse(sessionStorage.getItem("admin"));
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+  logout()
+  {
+    sessionStorage.clear();
+    this.router.navigate(['']);
   }
 
 }
