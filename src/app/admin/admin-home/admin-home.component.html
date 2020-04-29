@@ -1,6 +1,8 @@
 <div class="row">
     <nav class="navbar navbar-expand-md bg-dark navbar-dark nav-fill w-100">
         <a class="navbar-brand" href="#">FlightManager</a>
+        <button [routerLink]="['admin/home/addAirport']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Add Airport</button>
+                    <button [routerLink]="['admin/home/deleteAirport']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Delete Airport</button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>

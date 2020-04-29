@@ -8,10 +8,14 @@ import { AdminRegisterComponent } from './admin-landing-page/admin-register/admi
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminAddAirportComponent } from './admin-home/admin-add-airport/admin-add-airport.component';
+import { AdminDeleteAirportComponent } from './admin-home/admin-delete-airport/admin-delete-airport.component';
+import { AirportAddFlightComponent } from './admin-home/admin-add-airport/airport-add-flight/airport-add-flight.component';
+import { AdminDeleteFlightComponent } from './admin-home/admin-add-airport/admin-delete-flight/admin-delete-flight.component';
 
 
 @NgModule({
-  declarations: [AdminLandingPageComponent, LoginComponent, AdminRegisterComponent, AdminHomeComponent],
+  declarations: [AdminLandingPageComponent, LoginComponent, AdminRegisterComponent, AdminHomeComponent, AdminAddAirportComponent, AdminDeleteAirportComponent, AirportAddFlightComponent, AdminDeleteFlightComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
