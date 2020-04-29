@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.traveler).subscribe(
       (response) => {
         this.traveler = response
+        sessionStorage.setItem("userType", JSON.stringify("traveler"));
         sessionStorage.setItem("traveler", JSON.stringify(this.traveler));
         this.router.navigate(['/home']);
     }

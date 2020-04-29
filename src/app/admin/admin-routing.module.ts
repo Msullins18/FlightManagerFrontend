@@ -4,6 +4,7 @@ import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-pa
 import { LoginComponent } from './admin-landing-page/login/login.component';
 import { AdminRegisterComponent } from './admin-landing-page/admin-register/admin-register.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { RoutingGuard } from '../routing-guard';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
     {path: 'register', component: AdminRegisterComponent}
   ] },
 
-  { path: 'admin/home', component: AdminHomeComponent, children: [
+  { path: 'admin/home', component: AdminHomeComponent,canActivate:[RoutingGuard], children: [
 
   ]}
 ];
