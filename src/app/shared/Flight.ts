@@ -9,4 +9,5 @@ export class Flight {
     airportId: Number;
     flightFare: Number;
     flightTax: Number;
+    errorMessage: string;
 }
