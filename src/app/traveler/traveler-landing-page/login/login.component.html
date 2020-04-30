@@ -1,18 +1,32 @@
-<div class="form-bg-light p-2">
-    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-group w-100">
-            <label for="emailID">Email address</label>
-            <input type="email" formControlName="emailID" class="form-control" name="emailID" id="emailID">
-        </div>
 
-        <div class="form-group w-100">
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" class="form-control" name="password" id="password">
-        </div>
 
-        <div class="form-group w-100">
-            <button type="submit" class="btn btn-primary mr-4">Login</button>
-            <button [routerLink]="['/applicationHome/register']" routerLinkActive="router-link-active"  type="button" class="btn btn-light ml-5">Register</button>
+<div class="card">
+    <div class="card-body">
+        <div class="card-header p-1">
+            <h3 class="h3 m-0 p-0">Login</h3>
         </div>
-    </form>
+        <div *ngIf="errorMessage == null" class="form-bg-light p-2">
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="form-group w-100">
+                    <label for="emailID">Email address</label>
+                    <input type="email" formControlName="emailID" class="form-control" name="emailID" id="emailID">
+                </div>
+        
+                <div class="form-group w-100">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" name="password" id="password">
+                </div>
+        
+                <div class="form-group w-100">
+                    <button type="submit" class="btn btn-primary mr-4">Login</button>
+                    <button [routerLink]="['/applicationHome/register']" routerLinkActive="router-link-active"  type="button" class="btn btn-light ml-5">Register</button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="errorMessage != null" class="container text-center text-danger align-content-center justify-content-center mt-3">
+            <p>{{ errorMessage }}</p>
+            <br>
+            <button (click)="errorMessage = null" type="button" class="btn btn-primary mb-3">Try Again</button>
+        </div>
+    </div>
 </div>

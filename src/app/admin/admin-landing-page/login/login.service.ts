@@ -20,8 +20,14 @@ export class LoginService {
   }
 
   private handleError(err: HttpErrorResponse) {
-    console.log(err);
-
-    return throwError(err.message);
+    if(err.status == 400 || err.status == 404 || err.status == 401)
+    {
+      return throwError(err.error);
+    }
+    if(err.status == 0)
+    {
+      return throwError("Connection to backend could not be established");
+    }
+    return throwError("Some unkown error occured! : " + err.message);
   }
 }

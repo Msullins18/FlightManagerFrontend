@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  traveler: Traveler
+  traveler: Traveler;
+  errorMessage: string;
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("userType", JSON.stringify("traveler"));
         sessionStorage.setItem("traveler", JSON.stringify(this.traveler));
         this.router.navigate(['/home']);
-    }
+    },
+    error => {this.errorMessage = error;}
     )
   }
 }

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <div *ngIf="!registered" class="form-bg-light p-2">
+        <div *ngIf="!registered && errorMessage == null" class="form-bg-light p-2">
             <form class="form" [formGroup]="loginForm" (ngSubmit)="register()">
                 <div class="card-header pl-0">
                     <h3 class="h3 m-0 p-0">Register</h3>
@@ -45,6 +45,11 @@
             <p>Successfully registered with email ID: {{ registeredEmail }}</p>
             <br>
             <button [routerLink]="['/applicationHome/login']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Login</button>
+        </div>
+        <div *ngIf="errorMessage != null" class="container text-center text-danger align-content-center justify-content-center mt-3">
+            <p>{{ errorMessage }}</p>
+            <br>
+            <button (click)="errorMessage = null" type="button" class="btn btn-primary mb-3">Try Again</button>
         </div>
     </div>
 </div>
