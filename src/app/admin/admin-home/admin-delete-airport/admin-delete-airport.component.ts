@@ -31,12 +31,12 @@ export class AdminDeleteAirportComponent implements OnInit {
   }
 
   // Remove Testing variable
-  airportId: number = 2000;
+  //airportId: number = 2000;
   deleteAirport(airportId: number) {
     this.deleteAirportService.deleteAirport(airportId).subscribe(
       (response) => {
-        console.log(JSON.stringify(response));
-        // this.successMessage = response.successMessage;
+        //console.log(response);
+        this.successMessage = "The following Airport has been successfully deleted with Airport Id: " + response;
         this.errorMessage = "";
         let newAirportList: Airport[] = [];
 

@@ -44,7 +44,7 @@
     <button class="btn btn-primary" (click)='removeDealForToday(dealId)'>Remove Deal Id {{dealId}}</button> -->
   
     <div *ngIf="successMessage!=null || errorMessage!=null">
-      <div class="success-message text-center">{{successMessage}}</div>
-      <div class="error-message text-center">{{errorMessage}}</div>
+      <div class="success-message text-center text-success">{{successMessage}}</div>
+      <div class="error-message text-center text-danger">{{errorMessage}}</div>
     </div>
   </div>

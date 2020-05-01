@@ -29,8 +29,9 @@
             <h3 class="h3 m-0 p-0">Success!</h3>
         </div>
         <div *ngIf="added" class="container text-center align-content-center justify-content-center mt-3">
-            <p>Successfully registered the following airport: {{ addedAirport }}</p>
+            <p class="text-success">Successfully registered the following airport: {{ addedAirport }}</p>
             <br>
+            <button (click)="added = false; airportForm.reset();" type="button" class="btn btn-primary">Back</button>
         </div>
     </div>
 </div>

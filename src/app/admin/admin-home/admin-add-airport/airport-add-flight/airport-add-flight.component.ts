@@ -43,6 +43,7 @@ export class AirportAddFlightComponent implements OnInit {
     this.flight.flightFare = this.flightForm.value.flightFare
     this.flight.flightTax = this.flightForm.value.flightTax
     this.flight.flightType = this.flightForm.value.flightType
+    this.flight.flightSize = this.flightForm.value.flightSize
     this.flight.destination = this.flightForm.value.destination
     this.flight.airportId = this.flightForm.value.airportId
     this.flight.seatsAvailable = this.flightForm.value.seatsAvailable
