@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Traveler } from 'src/app/shared/traveler';
-import { Airport } from 'src/app/shared/airport';
-import { Flight } from 'src/app/shared/flight';
+import { Airport } from 'src/app/shared/Airport';
+import { Flight } from 'src/app/shared/Flight';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TravelerSearchService } from './traveler-search.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';

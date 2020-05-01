@@ -15,6 +15,7 @@ export class TravelerRegisterComponent implements OnInit {
   traveler: Traveler;
   registered: boolean;
   registeredEmail: string;
+  errorMessage: string;
   constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) { }
 
   ngOnInit() {
@@ -42,7 +43,8 @@ export class TravelerRegisterComponent implements OnInit {
     this.registerService.register(this.traveler).subscribe(
       (Response) => {this.registered = true;
         this.registeredEmail = Response;
-      }
+      },
+      error => {this.errorMessage = error;}
     )
   }
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 import { Admin } from 'src/app/shared/admin';
+import { error } from 'util';
 @Component({
   selector: 'app-admin-register',
   templateUrl: './admin-register.component.html',
@@ -11,6 +12,7 @@ import { Admin } from 'src/app/shared/admin';
 export class AdminRegisterComponent implements OnInit {
   loginForm: FormGroup;
   admin: Admin;
+  errorMessage: string;
   registered: boolean;
   registeredEmail: string;
   constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) { }
@@ -40,7 +42,8 @@ export class AdminRegisterComponent implements OnInit {
     this.registerService.register(this.admin).subscribe(
       (Response) => {this.registered = true;
         this.registeredEmail = Response;
-      }
+      },
+      error => {this.errorMessage = error;}
     )
   }
 }
