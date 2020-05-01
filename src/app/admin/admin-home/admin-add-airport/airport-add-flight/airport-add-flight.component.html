@@ -12,8 +12,8 @@
                 </div>
                 
                 <div class="form-group w-100">
-                    <label for="flightTax">Enter Tax amount</label>
-                    <input type="number" formControlName="city" class="form-control" name="city" id="city">
+                    <label for="flightTax">Enter Tax Percentage</label>
+                    <input type="number" formControlName="flightTax" class="form-control" name="flightTax" id="flightTax">
                 </div>
         
                 <div class="form-group w-100 mb-4">
@@ -46,8 +46,8 @@
                 </div>
         
                 <div class="form-group w-100">
-                    <label for="dateOfdeparture">Enter Date of Departure</label>
-                    <input type="date" formControlName="dateOfdeparture" class="form-control" name="dateOfdeparture" id="dateOfdeparture">
+                    <label for="dateOfDeparture">Enter Date of Departure</label>
+                    <input type="date" formControlName="dateOfDeparture" class="form-control" name="dateOfDeparture" id="dateOfDeparture">
                 </div>
                 <div class="card-footer">
                     <div class="form-group m-0">
@@ -60,7 +60,7 @@
         <div *ngIf="flightAdded" class="card-header pl-0">
             <h3 class="h3 m-0 p-0">Success!</h3>
         </div>
-        <div *ngIf="registered" class="container text-center align-content-center justify-content-center mt-3">
+       <div *ngIf="flightAdded" class="container text-center align-content-center justify-content-center mt-3">
             <p>Successfully registered with flight ID: {{ addedFlight }}</p>
             <br>
             <button [routerLink]="['/admin/home']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary m-0">Go Back</button>
@@ -69,48 +69,3 @@
 </div>
 
 
-<!--
-                <div class="form-group w-100 mt-3">
-                    <label for="flightFare">Enter Flight Fare</label>
-                    <input type="number" formControlName="flightFare" class="form-control" name="flightFare" id="flightFare">
-                </div>
-                
-                <div class="form-group w-100">
-                    <label for="flightTax">Enter Tax amount</label>
-                    <input type="number" formControlName="city" class="form-control" name="city" id="city">
-                </div>
-        
-                <div class="form-group w-100 mb-4">
-                    <label for="flightType">Type of flight</label>
-                    <input type="text" formControlName="flightType" class="form-control" name="flightType" id="flightType">
-                </div>
-
-                <div class="form-group w-100 mt-3">
-                    <label for="flightSize">Enter Flight Size</label>
-                    <input type="number" formControlName="flightSize" class="form-control" name="flightSize" id="flightSize">
-                </div>
-                
-                <div class="form-group w-100">
-                    <label for="airportId">Enter Airport Id</label>
-                    <input type="number" formControlName="airportId" class="form-control" name="airportId" id="airportId">
-                </div>
-        
-                <div class="form-group w-100 mb-4">
-                    <label for="destination">Enter Flight Destination</label>
-                    <input type="text" formControlName="destination" class="form-control" name="destination" id="destination">
-                </div>
-                <div class="form-group w-100 mt-3">
-                    <label for="seatsAvailable">Enter Seats Available</label>
-                    <input type="number" formControlName="seatsAvailable" class="form-control" name="seatsAvailable" id="seatsAvailable">
-                </div>
-                
-                <div class="form-group w-100">
-                    <label for="dateOfArrival">Enter Date of Arrival</label>
-                    <input type="date" formControlName="dateOfArrival" class="form-control" name="dateOfArrival" id="dateOfArrival">
-                </div>
-        
-                <div class="form-group w-100">
-                    <label for="dateOfdeparture">Enter Date of Departure</label>
-                    <input type="date" formControlName="dateOfdeparture" class="form-control" name="dateOfdeparture" id="dateOfdeparture">
-                </div>
--->

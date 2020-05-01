@@ -27,7 +27,7 @@ export class AirportAddFlightComponent implements OnInit {
         flightFare: [this.flight.flightFare, [Validators.required],null],
         flightTax: [this.flight.flightTax, [Validators.required],null],
         flightType: [this.flight.flightType, [Validators.required],null],
-        flightSize: [this.flight.flihtSize, [Validators.required],null],
+        flightSize: [this.flight.flightSize, [Validators.required],null],
         airportId: [this.flight.airportId, [Validators.required],null],
         destination: [this.flight.destination, [Validators.required],null],
         seatsAvailable: [this.flight.seatsAvailable, [Validators.required],null],

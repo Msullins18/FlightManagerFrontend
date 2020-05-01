@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-//import { Flight } from 'src/app/shared/flight';
 import { environment } from 'src/environments/environment';
-import { Airport } from 'src/app/shared/airport';
+import { Flight } from 'src/app/shared/flight';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AirportDeleteService {
+export class DeleteFlightService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
-getAirports(): Observable<Airport[]> {
-    const url = environment.adminAPIUrl + "/getAirports";
+getFlights(): Observable<Flight[]> {
+    const url = environment.airportAPIUrl + "/getFlights";
     console.log(url);
-    return this.http.get<Airport[]>(url)
+    return this.http.get<Flight[]>(url)
       .pipe(catchError(this.handleError));
   }
   
-deleteAirport(airportId: number): Observable<number> {
-    const url = environment.adminAPIUrl + "/deleteAirport/" + airportId;
-    return this.http.post<number>(url, airportId, { headers: this.headers }).pipe(catchError(this.handleError));
+deleteFlight(flightId: number): Observable<number> {
+    const url = environment.airportAPIUrl + "/deleteFlight/" + flightId;
+    return this.http.post<number>(url, flightId, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -45,3 +44,6 @@ deleteAirport(airportId: number): Observable<number> {
     return throwError(errMsg);
   }
 }
+
+
+

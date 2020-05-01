@@ -13,11 +13,12 @@ export class AdminAddAirportComponent implements OnInit {
   airportForm: FormGroup;
   airport: Airport;
   added: boolean;
-  addedAirport: Airport;
+  addedAirport: string;
   constructor(private fb: FormBuilder, private airportService: AirportService, private router: Router) { }
 
   ngOnInit() {
     this.airport=new Airport();
+    this.airport.flights = [];
     this.createForm();
   }
 
@@ -26,7 +27,6 @@ export class AdminAddAirportComponent implements OnInit {
         airportId: [this.airport.airportId, [Validators.required],null],
         city: [this.airport.city, [Validators.required],null],
         airportName: [this.airport.airportName, [Validators.required],null],
-        flights: [this.airport.flights, [Validators.required],null]
     });
   }
 
@@ -35,8 +35,6 @@ export class AdminAddAirportComponent implements OnInit {
     this.airport.airportId = this.airportForm.value.airportId;
     this.airport.city = this.airportForm.value.city;
     this.airport.airportName = this.airportForm.value.airportName;
-    this.airport.flights = this.airportForm.value.flights;
-    
     this.airportService.addAirport(this.airport).subscribe(
       (Response) => {this.added = true;
         this.addedAirport = Response;

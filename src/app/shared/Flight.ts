@@ -1,12 +1,13 @@
-export class Flight {
-    flightId: Number;
+export class Flight{
+    flightId: number;
     flightType: string;
-    flihtSize: Number;
-    seatsAvailable: Number;
+    flightSize: number;
+    seatsAvailable: number;
     dateOfArrival: Date;
     dateOfDeparture: Date;
     destination: string;
-    airportId: Number;
-    flightFare: Number;
-    flightTax: Number;
+    airportId: number;
+    flightFare: number;
+    flightTax: number;
+    errorMessage: string;
 }

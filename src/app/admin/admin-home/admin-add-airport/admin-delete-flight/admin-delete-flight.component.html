@@ -1,1 +1,50 @@
-<p>admin-delete-flight works!</p>
+<div>
+    <div class="text-center table-responsive table-border">
+      <h3 class="title">All Flights</h3>
+  
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th style="text-align: center">Flight Id</th>
+            <th style="text-align: center">Airport Id</th>
+            <th style="text-align: center">Flight Fare</th>
+            <th style="text-align: center">Flight Size </th>
+            <th style="text-align: center">Destination</th>
+            <th style="text-align: center">Flight Tax Percentage</th>
+            <th style="text-align: center">Seats Available</th>
+            <th style="text-align: center">Date of Arrival</th>
+            <th style="text-align: center">Date of Departure </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flightList">
+            <td>{{flight.flightId}}</td>
+            <td>{{flight.airportId}}</td>
+            <td>{{flight.flightFare}}</td>
+            <td>{{flight.flightSize}}</td>
+            <td>{{flight.destination}}</td>
+            <td>{{flight.flightTax}}</td>
+            <td>{{flight.seatsAvailable}}</td>
+            <td>{{flight.dateOfArrival}}</td>
+            <td>{{flight.dateOfDeparture}}</td>
+            <td>
+              <button class="btn btn-primary" (click)='deleteFlight(flight.flightId)'>Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!--Above code is view of deals page. Bellow code idk-->
+    </div>
+  
+    <!-- <br><br>
+    <p>Remove Testing dealId: 501001, 501014, 501021, 501022, 501023, 501032, 501037</p>
+    <input type="number" [(ngModel)]="dealId" placeholder="Enter the Deal Id">
+    <br><br>
+    <button class="btn btn-primary" (click)='removeDealForToday(dealId)'>Remove Deal Id {{dealId}}</button> -->
+  
+    <div *ngIf="successMessage!=null || errorMessage!=null">
+      <div class="success-message text-center">{{successMessage}}</div>
+      <div class="error-message text-center">{{errorMessage}}</div>
+    </div>
+  </div>

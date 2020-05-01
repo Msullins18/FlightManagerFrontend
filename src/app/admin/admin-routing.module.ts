@@ -7,6 +7,10 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 
 import { RoutingGuard } from '../routing-guard';
+import { AdminAddAirportComponent } from './admin-home/admin-add-airport/admin-add-airport.component';
+import { AirportAddFlightComponent } from './admin-home/admin-add-airport/airport-add-flight/airport-add-flight.component';
+import { AdminDeleteAirportComponent } from './admin-home/admin-delete-airport/admin-delete-airport.component';
+import { AdminDeleteFlightComponent } from './admin-home/admin-add-airport/admin-delete-flight/admin-delete-flight.component';
 
 
 
@@ -17,12 +21,12 @@ const routes: Routes = [
     {path: 'register', component: AdminRegisterComponent}
   ] },
 
-
-
-  { path: 'admin/home', component: AdminHomeComponent,canActivate:[RoutingGuard], children: [
-
-
-  ]}
+ { path: 'admin/home', component: AdminHomeComponent, children: [
+    {path: 'addAirport', component: AdminAddAirportComponent},
+    {path: 'addFlight', component: AirportAddFlightComponent},
+    {path: 'deleteFlight', component: AdminDeleteFlightComponent},
+    {path: 'deleteAirport', component: AdminDeleteAirportComponent}
+]}
 ];
 
 @NgModule({

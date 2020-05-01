@@ -1,8 +1,8 @@
-import {Flight} from './Flight'
+import { Flight } from './flight';
 
-export class Airport {
+export class Airport{
     airportId: number;
-    city: string;
     airportName: string;
+    city: string;
     flights: Flight[];
 }

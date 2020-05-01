@@ -13,7 +13,7 @@ export class AddFlightService {
 
   addFlight(flight: Flight): Observable<string>
   {
-    const url = environment.adminAPIUrl + '/addFlight';
+    const url = environment.airportAPIUrl + '/addFlight' ;
 
     return this.http.post<string>(url,flight,{headers: this.headers, responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));

@@ -1,1 +1,36 @@
-<p>admin-delete-airport works!</p>
+<div>
+    <div class="text-center table-responsive table-border">
+      <h3 class="title">All Airports</h3>
+  
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th style="text-align: center">Airport Name</th>
+            <th style="text-align: center">City of Airport</th>
+            <th style="text-align: center">Airport Id</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let airport of airportList">
+            <td>{{airport.airportName}}</td>
+            <td>{{airport.city}}</td>
+            <td>{{airport.airportId}}</td>
+              <button class="btn btn-primary" (click)='deleteAirport(airport.airportId)'>Delete</button>
+          </tr>
+        </tbody>
+      </table>
+      <!--Above code is view of deals page. Bellow code idk-->
+    </div>
+  
+    <!-- <br><br>
+    <p>Remove Testing dealId: 501001, 501014, 501021, 501022, 501023, 501032, 501037</p>
+    <input type="number" [(ngModel)]="dealId" placeholder="Enter the Deal Id">
+    <br><br>
+    <button class="btn btn-primary" (click)='removeDealForToday(dealId)'>Remove Deal Id {{dealId}}</button> -->
+  
+    <div *ngIf="successMessage!=null || errorMessage!=null">
+      <div class="success-message text-center">{{successMessage}}</div>
+      <div class="error-message text-center">{{errorMessage}}</div>
+    </div>
+  </div>
