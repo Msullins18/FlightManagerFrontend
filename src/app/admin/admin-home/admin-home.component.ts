@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Admin } from 'src/app/shared/admin';
+import { User } from 'src/app/shared/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-home.component.css']
 })
 export class AdminHomeComponent implements OnInit {
-  admin: Admin = JSON.parse(sessionStorage.getItem("admin"));
+  user: User = JSON.parse(sessionStorage.getItem("user"));
   constructor(private router: Router) { }
 
   ngOnInit() {

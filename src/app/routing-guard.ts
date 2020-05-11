@@ -13,17 +13,16 @@ export class RoutingGuard implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         let userType=sessionStorage.getItem("userType");
         let toRet:boolean=false;
-        if(userType!=null){
-            if(sessionStorage.getItem("admin")!=null){
-                toRet= true;
-            }else if( sessionStorage.getItem("traveler")!=null){
-                toRet= true;
-            }
+        
+        if(sessionStorage.getItem("user")!=null && sessionStorage.getItem("token")!=null){
+            toRet= true;
         }
 
         if(toRet){
             return toRet;
-        }else{
+        }
+        
+        else{
             this.route.navigate([""]);
             return toRet;
             

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Traveler } from 'src/app/shared/traveler';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
+import { User } from 'src/app/shared/user';
 
 @Component({
   selector: 'app-traveler-register',
@@ -12,35 +11,35 @@ import { RegisterService } from './register.service';
 })
 export class TravelerRegisterComponent implements OnInit {
   loginForm: FormGroup;
-  traveler: Traveler;
+  user: User;
   registered: boolean;
   registeredEmail: string;
   errorMessage: string;
   constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) { }
 
   ngOnInit() {
-    this.traveler = new Traveler();
+    this.user = new User();
     this.createForm()
   }
   createForm() {
     this.loginForm = this.fb.group({
-        emailId: [this.traveler.emailId, [Validators.required],null],
-        firstName: [this.traveler.firstName, [Validators.required],null],
-        lastName: [this.traveler.lastName, [Validators.required],null],
-        phoneNumber: [this.traveler.phoneNumber, [Validators.required],null],
-        password: [this.traveler.password, [Validators.required],null]
+        emailId: [this.user.emailId, [Validators.required],null],
+        firstName: [this.user.firstName, [Validators.required],null],
+        lastName: [this.user.lastName, [Validators.required],null],
+        phoneNumber: [this.user.phoneNumber, [Validators.required],null],
+        password: [this.user.password, [Validators.required],null]
     });
   }
 
   register()
   {
-    this.traveler.emailId = this.loginForm.value.emailId;
-    this.traveler.firstName = this.loginForm.value.firstName;
-    this.traveler.lastName = this.loginForm.value.lastName;
-    this.traveler.phoneNumber = this.loginForm.value.phoneNumber;
-    this.traveler.password = this.loginForm.value.password;
+    this.user.emailId = this.loginForm.value.emailId;
+    this.user.firstName = this.loginForm.value.firstName;
+    this.user.lastName = this.loginForm.value.lastName;
+    this.user.phoneNumber = this.loginForm.value.phoneNumber;
+    this.user.password = this.loginForm.value.password;
     
-    this.registerService.register(this.traveler).subscribe(
+    this.registerService.register(this.user).subscribe(
       (Response) => {this.registered = true;
         this.registeredEmail = Response;
       },

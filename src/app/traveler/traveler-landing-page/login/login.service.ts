@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
-import { Traveler } from 'src/app/shared/traveler';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/shared/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +11,11 @@ export class LoginService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
-  login(traveler: Traveler): Observable<Traveler>
+  login(user: User): Observable<String>
   {
-    const url = environment.travelerAPIUrl + '/Login';
+    const url = environment.loginAPIUrl;
 
-    return this.http.post<Traveler>(url,traveler)
+    return this.http.post<String>(url,user,{headers: this.headers,responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
   }
 

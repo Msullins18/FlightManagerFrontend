@@ -10,13 +10,13 @@ import { Airport } from 'src/app/shared/Airport';
   providedIn: 'root'
 })
 export class AirportService {
-
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+  private tokenString: string = "Bearer " + sessionStorage.getItem("token").replace(new RegExp('"', 'g'),'');
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'}).set("Authorization",this.tokenString);
   constructor(private http: HttpClient) { }
 
   addAirport(airport: Airport): Observable<any>
   {
-    const url = environment.adminAPIUrl + '/addAirport';
+    const url = environment.airportAPIUrl + '/addAirport';
     return this.http.post<Airport>(url,airport,{headers: this.headers, responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
   }

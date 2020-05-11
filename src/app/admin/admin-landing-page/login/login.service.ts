@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Admin } from 'src/app/shared/admin';
+import { User } from 'src/app/shared/user';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -8,14 +8,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
+  //private tokenString : string = "Bearer " + sessionStorage.getItem("token");
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
-  login(admin: Admin): Observable<Admin>
+  login(user: User): Observable<string>
   {
-    const url = environment.adminAPIUrl + '/Login';
+    const url = environment.loginAPIUrl;
 
-    return this.http.post<Admin>(url,admin,{headers: this.headers})
+    return this.http.post<string>(url,user,{headers: this.headers,responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
   }
 

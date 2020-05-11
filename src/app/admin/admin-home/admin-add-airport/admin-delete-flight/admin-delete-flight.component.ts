@@ -37,7 +37,7 @@ export class AdminDeleteFlightComponent implements OnInit {
     this.deleteFlightService.deleteFlight(flightId).subscribe(
       (response) => {
         console.log(JSON.stringify(response));
-        // this.successMessage = response.successMessage;
+        this.successMessage = "The following Flight has been successfully deleted with Flight Id: " + response;
         this.errorMessage = "";
         let newFlightList: Flight[] = [];
 
