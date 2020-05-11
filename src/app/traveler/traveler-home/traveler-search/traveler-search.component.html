@@ -74,8 +74,8 @@
                         <td>{{flight.dateOfDeparture}}</td>
                         <td>{{flight.dateOfArrival}}</td>
                         <td>{{flight.flightFare}}</td>
-                        <td>{{flight.flightTax}}</td>
-                        <td>{{flight.flightFare + flight.flightTax}}</td>
+                        <td>{{flight.flightFare * flight.flightTax/100}}</td>
+                        <td>{{flight.flightFare + flight.flightFare * flight.flightTax/100}}</td>
                     </tr>
                 </tbody>
                 
