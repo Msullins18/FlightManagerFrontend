@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Traveler } from '../../../shared/traveler';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/user';
 
 @Component({
   selector: 'app-login',
@@ -11,30 +11,33 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  traveler: Traveler;
+  user: User;
+  private token: String;
   errorMessage: string;
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.traveler = new Traveler();
+    this.user = new User();
     this.createForm()
   }
   createForm() {
 
     this.loginForm = this.fb.group({
-        emailID: [this.traveler.emailId, [Validators.required],null],
-        password: [this.traveler.password, [Validators.required],null]
+        emailID: [this.user.emailId, [Validators.required],null],
+        password: [this.user.password, [Validators.required],null]
     });
   }
   login()
   {
-    this.traveler.emailId = this.loginForm.value.emailID;
-    this.traveler.password = this.loginForm.value.password;
-    this.loginService.login(this.traveler).subscribe(
+    this.user.emailId = this.loginForm.value.emailID;
+    this.user.password = this.loginForm.value.password;
+    this.user.userType = "TRAVELER";
+    this.loginService.login(this.user).subscribe(
       (response) => {
-        this.traveler = response
-        sessionStorage.setItem("userType", JSON.stringify("traveler"));
-        sessionStorage.setItem("traveler", JSON.stringify(this.traveler));
+        this.token = response
+        console.log(this.token);
+        sessionStorage.setItem("token", JSON.stringify(this.token));
+        sessionStorage.setItem("user", JSON.stringify(this.user));
         this.router.navigate(['/home']);
     },
     error => {this.errorMessage = error;}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Traveler } from 'src/app/shared/traveler';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/user';
 
 @Component({
   selector: 'app-traveler-home',
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./traveler-home.component.css']
 })
 export class TravelerHomeComponent implements OnInit {
-  traveler: Traveler = JSON.parse(sessionStorage.getItem("traveler"));
+  user: User = JSON.parse(sessionStorage.getItem("user"));
   constructor(private router: Router) { }
 
   ngOnInit() {

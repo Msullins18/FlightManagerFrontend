@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Traveler } from 'src/app/shared/traveler';
 import { Airport } from 'src/app/shared/Airport';
 import { Flight } from 'src/app/shared/Flight';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TravelerSearchService } from './traveler-search.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SearchFlights } from 'src/app/shared/searchFlights';
+import { User } from 'src/app/shared/user';
 
 @Component({
   selector: 'app-traveler-search',
@@ -14,7 +14,7 @@ import { SearchFlights } from 'src/app/shared/searchFlights';
 })
 export class TravelerSearchComponent implements OnInit {
 
-  traveler: Traveler;
+  user: User;
   flightList: Flight[];
   airportList: Airport[];
   destinationList: string[];
@@ -28,7 +28,7 @@ export class TravelerSearchComponent implements OnInit {
     private travelerSearchService:TravelerSearchService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.traveler = JSON.parse(sessionStorage.getItem('traveler'));
+    this.user = JSON.parse(sessionStorage.getItem('user'));
     this.travelerSearchService.getAirports().subscribe(
       airportList => {this.airportList = airportList
       sessionStorage.setItem("airportList", JSON.stringify(this.airportList))

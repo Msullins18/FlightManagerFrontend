@@ -9,13 +9,14 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DeleteFlightService {
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private tokenString: string = "Bearer " + sessionStorage.getItem("token").replace(new RegExp('"', 'g'),'');
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'}).set("Authorization",this.tokenString);
   constructor(private http: HttpClient) { }
 
 getFlights(): Observable<Flight[]> {
     const url = environment.airportAPIUrl + "/getFlights";
     console.log(url);
-    return this.http.get<Flight[]>(url)
+    return this.http.get<Flight[]>(url,{ headers: this.headers })
       .pipe(catchError(this.handleError));
   }
   

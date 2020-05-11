@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: 'register', component: AdminRegisterComponent}
   ] },
 
- { path: 'admin/home', component: AdminHomeComponent, children: [
+ { path: 'admin/home', component: AdminHomeComponent, canActivate:[RoutingGuard], children: [
     {path: 'addAirport', component: AdminAddAirportComponent},
     {path: 'addFlight', component: AirportAddFlightComponent},
     {path: 'deleteFlight', component: AdminDeleteFlightComponent},

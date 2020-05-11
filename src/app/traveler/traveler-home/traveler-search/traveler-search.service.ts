@@ -9,19 +9,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TravelerSearchService {
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private tokenString: string = "Bearer " + sessionStorage.getItem("token").replace(new RegExp('"', 'g'),'');
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'}).set("Authorization",this.tokenString);
 
   constructor(private http: HttpClient) { }
 
   getAirports(): Observable<any[]>{
     const url = environment.travelerSearchAPIUrl + '/getAirports';
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   getDestinations(): Observable<any[]>{
     const url = environment.travelerSearchAPIUrl + '/getDestinations';
-    return this.http.get<any[]>(url)
+    return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
@@ -33,7 +34,7 @@ export class TravelerSearchService {
     // return this.http.get<any[]>(url,{params:param})
     // .pipe(catchError(this.handleError));  
 
-    return this.http.post<Observable<any>>(url, searchForm)
+    return this.http.post<Observable<any>>(url, searchForm,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 

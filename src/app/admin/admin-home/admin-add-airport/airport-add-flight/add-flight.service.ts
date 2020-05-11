@@ -8,7 +8,8 @@ import { Flight } from 'src/app/shared/Flight';
   providedIn: 'root'
 })
 export class AddFlightService {
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+  private tokenString: string = "Bearer " + sessionStorage.getItem("token").replace(new RegExp('"', 'g'),'');
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'}).set("Authorization",this.tokenString);
   constructor(private http: HttpClient) { }
 
   addFlight(flight: Flight): Observable<string>

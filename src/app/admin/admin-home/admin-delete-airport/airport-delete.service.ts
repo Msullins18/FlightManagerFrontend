@@ -10,18 +10,19 @@ import { Airport } from 'src/app/shared/airport';
   providedIn: 'root'
 })
 export class AirportDeleteService {
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private tokenString: string = "Bearer " + sessionStorage.getItem("token").replace(new RegExp('"', 'g'),'');
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'}).set("Authorization",this.tokenString);
   constructor(private http: HttpClient) { }
 
 getAirports(): Observable<Airport[]> {
-    const url = environment.adminAPIUrl + "/getAirports";
+    const url = environment.airportAPIUrl + "/getAirports";
     console.log(url);
-    return this.http.get<Airport[]>(url)
+    return this.http.get<Airport[]>(url,{ headers: this.headers })
       .pipe(catchError(this.handleError));
   }
   
 deleteAirport(airportId: number): Observable<number> {
-    const url = environment.adminAPIUrl + "/deleteAirport/" + airportId;
+    const url = environment.airportAPIUrl + "/deleteAirport/" + airportId;
     return this.http.post<number>(url, airportId, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 
