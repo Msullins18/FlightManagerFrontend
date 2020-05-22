@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Flight } from 'src/app/shared/Flight';
 import { environment } from 'src/environments/environment';
+import { Airport } from 'src/app/shared/airport';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,19 @@ export class TravelerSearchService {
   constructor(private http: HttpClient) { }
 
   getAirports(): Observable<any[]>{
-    const url = environment.travelerSearchAPIUrl + '/getAirports';
+    const url = environment.travelerSearchAPIUrl;
     return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   getDestinations(): Observable<any[]>{
-    const url = environment.travelerSearchAPIUrl + '/getDestinations';
+    const url = environment.travelerSearchAPIUrl + 'destinations';
     return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   getFlights(searchForm):Observable<any>{
-    const url = environment.travelerSearchAPIUrl + '/getFlights';
+    const url = environment.travelerSearchAPIUrl;
     return this.http.post<Observable<any>>(url, searchForm,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
@@ -43,6 +44,6 @@ export class TravelerSearchService {
     {
       return throwError("Connection to backend could not be established");
     }
-    return throwError("Some unkown error occured! : " + err.message);
+    return throwError("Some unknown error occured! : " + err.message);
   }
 }
