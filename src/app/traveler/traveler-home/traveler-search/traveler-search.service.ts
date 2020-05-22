@@ -22,7 +22,7 @@ export class TravelerSearchService {
   }
 
   getDestinations(): Observable<any[]>{
-    const url = environment.travelerSearchAPIUrl + 'destinations';
+    const url = environment.travelerSearchAPIUrl + '/destinations';
     return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
