@@ -14,7 +14,7 @@ export class LoginService {
 
   login(user: User): Observable<string>
   {
-    const url = environment.loginAPIUrl;
+    const url = environment.userAPIUrl + '/Login';
 
     return this.http.post<string>(url,user,{headers: this.headers,responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
@@ -28,6 +28,10 @@ export class LoginService {
     if(err.status == 0)
     {
       return throwError("Connection to backend could not be established");
+    }
+    if(err.status == 403)
+    {
+      return throwError("Invalid Username / Password");
     }
     return throwError("Some unkown error occured! : " + err.message);
   }

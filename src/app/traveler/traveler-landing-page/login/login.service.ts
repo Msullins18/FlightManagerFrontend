@@ -13,7 +13,7 @@ export class LoginService {
 
   login(user: User): Observable<String>
   {
-    const url = environment.loginAPIUrl;
+    const url = environment.userAPIUrl + '/Login';
 
     return this.http.post<String>(url,user,{headers: this.headers,responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
