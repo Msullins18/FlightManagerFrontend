@@ -13,7 +13,6 @@ import { User } from 'src/app/shared/user';
   styleUrls: ['./traveler-search.component.css']
 })
 export class TravelerSearchComponent implements OnInit {
-
   user: User;
   flightList: Flight[];
   airportList: Airport[];

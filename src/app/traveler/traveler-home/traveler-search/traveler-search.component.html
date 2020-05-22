@@ -36,14 +36,16 @@
                         <td>
                             <input type="number" class="form-control" formControlName="numberOfTickets" min=1
                                 required />
+                            
                         </td>
                     </tr>
                 </table>
                 <div>
                     <div class="row">
-                        <button class="offset-md-4 btn btn-info form-button">
+                        <button class="offset-md-4 btn btn-info form-button" type = "submit" [disabled]="!searchForm.valid">
                             Search Flights
                         </button>
+                        
                     </div>
                 </div>
             </form>
@@ -56,7 +58,7 @@
         <br />
         <div class="row" *ngIf="isAvailable && errorMessage==null">
             <table class="table table-striped">
-                <thead>
+                <thead class="black white-text">
                     <tr>
                         <th style="text-align: center">Flight Id</th>
                         <th style="text-align: center">Destination</th>
@@ -73,9 +75,9 @@
                         <td>{{flight.destination}}</td>
                         <td>{{flight.dateOfDeparture}}</td>
                         <td>{{flight.dateOfArrival}}</td>
-                        <td>{{flight.flightFare}}</td>
-                        <td>{{flight.flightFare * flight.flightTax/100}}</td>
-                        <td>{{flight.flightFare + flight.flightFare * flight.flightTax/100}}</td>
+                        <td>{{flight.flightFare | currency}}</td>
+                        <td>{{(flight.flightFare * flight.flightTax/100) | currency}}</td>
+                        <td>{{(flight.flightFare + flight.flightFare * flight.flightTax/100) | currency}}</td>
                     </tr>
                 </tbody>
                 

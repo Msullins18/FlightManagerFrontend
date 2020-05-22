@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Flight } from 'src/app/shared/Flight';
 import { environment } from 'src/environments/environment';
+import { Airport } from 'src/app/shared/airport';
 
 @Injectable({
   providedIn: 'root'
@@ -15,25 +16,19 @@ export class TravelerSearchService {
   constructor(private http: HttpClient) { }
 
   getAirports(): Observable<any[]>{
-    const url = environment.travelerSearchAPIUrl + '/getAirports';
+    const url = environment.travelerSearchAPIUrl;
     return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   getDestinations(): Observable<any[]>{
-    const url = environment.travelerSearchAPIUrl + '/getDestinations';
+    const url = environment.travelerSearchAPIUrl + 'destinations';
     return this.http.get<any[]>(url,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   getFlights(searchForm):Observable<any>{
-    const url = environment.travelerSearchAPIUrl + '/getFlights';
-    // let param = new HttpParams()
-    // .set('airportId', airportId.toString())
-    // .set('destination',destination);
-    // return this.http.get<any[]>(url,{params:param})
-    // .pipe(catchError(this.handleError));  
-
+    const url = environment.travelerSearchAPIUrl;
     return this.http.post<Observable<any>>(url, searchForm,{headers: this.headers})
     .pipe(catchError(this.handleError));
   }
@@ -41,22 +36,14 @@ export class TravelerSearchService {
 
 
   private handleError(err: HttpErrorResponse) {
-    console.log(err)
-    let errMsg:string='';
-    if (err.error instanceof Error) {   
-        errMsg=err.error.message;
-        console.log(errMsg)
+      if(err.status == 400 || err.status == 404)
+    {
+      return throwError(err.error);
     }
-     else if(typeof err.error === 'string'){
-        errMsg=JSON.parse(err.error).message
+    if(err.status == 0)
+    {
+      return throwError("Connection to backend could not be established");
     }
-    else {
-       if(err.status==0){ 
-           errMsg="A connection to back end can not be established.";
-       }else{
-           errMsg=err.error.message;
-       }
-     }
-        return throwError(errMsg);
+    return throwError("Some unknown error occured! : " + err.message);
   }
 }
