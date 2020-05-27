@@ -16,7 +16,7 @@ export class AirportService {
 
   addAirport(airport: Airport): Observable<any>
   {
-    const url = environment.airportAPIUrl + '/addAirport';
+    const url = environment.airportAPIUrl + '/Airport';
     return this.http.post<Airport>(url,airport,{headers: this.headers, responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
   }

@@ -15,14 +15,14 @@ export class AirportDeleteService {
   constructor(private http: HttpClient) { }
 
 getAirports(): Observable<Airport[]> {
-    const url = environment.airportAPIUrl + "/getAirports";
+    const url = environment.airportAPIUrl + "/Airport";
     console.log(url);
     return this.http.get<Airport[]>(url,{ headers: this.headers })
       .pipe(catchError(this.handleError));
   }
   
 deleteAirport(airportId: number): Observable<number> {
-    const url = environment.airportAPIUrl + "/deleteAirport/" + airportId;
+    const url = environment.airportAPIUrl + "/Airport/" + airportId;
     return this.http.post<number>(url, airportId, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 

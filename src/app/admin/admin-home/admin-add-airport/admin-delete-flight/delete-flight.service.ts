@@ -14,14 +14,14 @@ export class DeleteFlightService {
   constructor(private http: HttpClient) { }
 
 getFlights(): Observable<Flight[]> {
-    const url = environment.airportAPIUrl + "/getFlights";
+    const url = environment.flightAPIUrl + "/Flight";
     console.log(url);
     return this.http.get<Flight[]>(url,{ headers: this.headers })
       .pipe(catchError(this.handleError));
   }
   
 deleteFlight(flightId: number): Observable<number> {
-    const url = environment.airportAPIUrl + "/deleteFlight/" + flightId;
+    const url = environment.flightAPIUrl + "/Flight/" + flightId;
     return this.http.post<number>(url, flightId, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 
